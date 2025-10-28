@@ -94,19 +94,19 @@
             <img src="https://via.placeholder.com/250" alt="Mahsulot 1">
             <h3>Mahsulot 1</h3>
             <p>Narxi: $50</p>
-            <button onclick="addToCart('Mahsulot 1', 50)">Savatga qo‘shish</button>
+            <button onclick="placeOrder('Mahsulot 1', 50)">Buyurtma berish</button>
         </div>
         <div class="product">
             <img src="https://via.placeholder.com/250" alt="Mahsulot 2">
             <h3>Mahsulot 2</h3>
             <p>Narxi: $75</p>
-            <button onclick="addToCart('Mahsulot 2', 75)">Savatga qo‘shish</button>
+            <button onclick="placeOrder('Mahsulot 2', 75)">Buyurtma berish</button>
         </div>
         <div class="product">
             <img src="https://via.placeholder.com/250" alt="Mahsulot 3">
             <h3>Mahsulot 3</h3>
             <p>Narxi: $100</p>
-            <button onclick="addToCart('Mahsulot 3', 100)">Savatga qo‘shish</button>
+            <button onclick="placeOrder('Mahsulot 3', 100)">Buyurtma berish</button>
         </div>
     </section>
 
@@ -116,10 +116,30 @@
 
     <script>
         let cart = [];
-        function addToCart(name, price) {
+
+        function sendTelegramMessage(orderDetails) {
+            const token = "8263080229:AAF4Z07F0z3_0ZYMHVvYaW7SW-qU8cUvg_c";
+            const chat_id = "7790565302";
+            const message = `Yangi buyurtma:\n${orderDetails}`;
+
+            fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ chat_id, text: message })
+            })
+                .then(response => response.json())
+                .then(data => console.log("Xabar yuborildi:", data))
+                .catch(error => console.error("Xato:", error));
+        }
+
+        function placeOrder(name, price) {
             cart.push({ name, price });
-            alert(name + " savatga qo‘shildi!");
-            console.log(cart);
+            console.log("Savat:", cart);
+
+            const orderDetails = `Mahsulot: ${name}\nNarxi: $${price}`;
+            sendTelegramMessage(orderDetails);
+
+            alert(name + " buyurtma berildi va Telegramga yuborildi!");
         }
     </script>
 
