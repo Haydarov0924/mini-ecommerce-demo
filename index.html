@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini E-commerce Demo</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+            background: #fff8f0;
+        }
+
+        header {
+            background: #d4af37;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .product {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product h3 {
+            margin: 10px 0 5px;
+        }
+
+        .product p {
+            margin: 5px 0;
+        }
+
+        .product button {
+            background: #d4af37;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Mini E-commerce Demo</h1>
+        <nav>
+            <a href="#">Bosh sahifa</a>
+            <a href="#">Mahsulotlar</a>
+            <a href="#">Kontakt</a>
+        </nav>
+    </header>
+
+    <section class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/250" alt="Mahsulot 1">
+            <h3>Mahsulot 1</h3>
+            <p>Narxi: $50</p>
+            <button onclick="addToCart('Mahsulot 1', 50)">Savatga qo‘shish</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/250" alt="Mahsulot 2">
+            <h3>Mahsulot 2</h3>
+            <p>Narxi: $75</p>
+            <button onclick="addToCart('Mahsulot 2', 75)">Savatga qo‘shish</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/250" alt="Mahsulot 3">
+            <h3>Mahsulot 3</h3>
+            <p>Narxi: $100</p>
+            <button onclick="addToCart('Mahsulot 3', 100)">Savatga qo‘shish</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Mini E-commerce Demo | Kontakt: info@example.com</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            alert(name + " savatga qo‘shildi!");
+            console.log(cart);
+        }
+    </script>
+
+</body>
+
+</html>
